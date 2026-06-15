@@ -1,0 +1,6 @@
+{
+  "name": "IDX & Crypto AI Trading Analysis Platform",
+  "description": "An institutional-grade quantitative analysis, risk scanning, and machine learning trend prediction system for the Indonesian Stock Market (IDX) and Cryptocurrency.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

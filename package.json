@@ -1,0 +1,67 @@
+{
+  "name": "aisignalpro-best-merged",
+  "private": true,
+  "version": "1.0.0-merged",
+  "description": "Merged best build: conservative signal screener quality gates, enhanced v2 indicators and S/R risk, plus v3 realistic cost model and zero-training endpoints.",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx server.ts",
+    "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "start": "node dist/server.cjs",
+    "start:bridge": "python python_bridge/bridge_server.py",
+    "clean": "node -e \"const fs=require('fs');for (const p of ['dist','server.js']) { if (fs.existsSync(p)) fs.rmSync(p,{recursive:true,force:true}); }\"",
+    "lint": "tsc --noEmit",
+    "test": "tsx --test src/server/__tests__/quant_safety.test.ts src/server/__tests__/debate.engine.test.ts",
+    "test:autogluon": "python -m unittest ml.tests.test_autogluon_modules",
+    "autogluon:status": "python -m ml.autogluon_engine status",
+    "export:autogluon-data": "tsx scripts/export_training_ohlcv.ts",
+    "release": "tsx scripts/prepare_release.ts"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.14",
+    "@tensorflow/tfjs": "^4.22.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "axios": "^1.16.1",
+    "better-sqlite3": "^12.10.0",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "helmet": "^8.1.0",
+    "lightweight-charts": "^5.2.0",
+    "lucide-react": "^0.546.0",
+    "ml-matrix": "^6.12.2",
+    "motion": "^12.23.24",
+    "node-telegram-bot-api": "^1.1.0",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "react-router-dom": "^7.17.0",
+    "recharts": "^3.8.1",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3",
+    "yahoo-finance2": "2.14.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.14.0",
+    "@types/node-telegram-bot-api": "^0.64.14",
+    "@types/react": "^19.2.17",
+    "@types/react-router-dom": "^5.3.3",
+    "autoprefixer": "^10.4.21",
+    "esbuild": "^0.28.1",
+    "jsdom": "^29.1.1",
+    "tailwindcss": "^4.1.14",
+    "ts-morph": "^28.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "~5.8.2",
+    "vite": "^8.0.16",
+    "vitest": "^4.1.8"
+  },
+  "overrides": {
+    "esbuild": "$esbuild"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
